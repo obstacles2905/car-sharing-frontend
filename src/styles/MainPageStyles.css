@@ -1,0 +1,52 @@
+.main-container {
+    font-family: Arial, sans-serif;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between; /* Распределяет пространство между элементами */
+    align-items: center; /* Выравнивание по центру по вертикали */
+    /* Остальные стили для .top-nav */
+}
+
+.nav-right {
+    /* Если нужны дополнительные стили для правой части навигационного бара */
+}
+
+.top-nav button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #181111;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    /* Остальные стили кнопки */
+}
+
+.top-nav button:hover {
+    background-color: #181111;
+}
+
+
+.hero-section {
+    /* Стили для герой-раздела */
+    background-image: url('https://stars-h2020.eu/wp-content/uploads/2018/03/Photo-INEA-Project-Fiche.png'); /* Замените на путь к вашему изображению */
+    height: 400px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cars-showcase {
+    /* Стили для раздела с автомобилями */
+}
+
+.main-footer {
+    /* Стили для футера */
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}

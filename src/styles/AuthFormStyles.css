@@ -1,0 +1,80 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f7f6;
+}
+
+.auth-form {
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.auth-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #181111;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.auth-form button:hover {
+    background-color: #181111;
+}
+
+/* Стили для общего контейнера ссылок, если он у вас есть */
+.nav-links {
+    display: flex;
+    flex-direction: column; /* Для вертикального стека ссылок */
+    align-items: center; /* Центрирование по горизонтали */
+    gap: 10px; /* Расстояние между элементами */
+    list-style-type: none; /* Убрать маркеры списка */
+    padding: 0; /* Убрать паддинг у списка */
+}
+
+/* Стили для индивидуальных ссылок */
+.nav-link {
+    background-color: #181111; /* Цвет фона */
+    color: white; /* Цвет текста */
+    padding: 10px 15px; /* Внутренние отступы */
+    text-decoration: none; /* Убрать подчеркивание текста */
+    border-radius: 5px; /* Скругление углов */
+    transition: background-color 0.3s; /* Плавный эффект при наведении */
+}
+
+/* Стили для изменения фона при наведении */
+.nav-link:hover {
+    background-color: #9b9f9e;
+}
+
+.error-message {
+    color: red; /* Цвет текста ошибки */
+    margin-bottom: 10px; /* Отступ снизу */
+    text-align: center; /* Центрирование текста */
+}
