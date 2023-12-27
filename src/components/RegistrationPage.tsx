@@ -42,21 +42,21 @@ function RegisterPage() {
     return (
         <div className="auth-container">
             <form className="auth-form" onSubmit={handleSubmit}>
-                <h2>Register</h2>
+                <h2>Реєстрація</h2>
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
-                <div>
-                    <label>Email:</label>
+                <div className='form-field'>
+                    <label>Пошта:</label>
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
-                <div>
-                    <label>Password:</label>
+                <div className='form-field'>
+                    <label>Пароль:</label>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <div>
-                    <label>Confirm Password:</label>
+                <div className='form-field'>
+                    <label>Підтвердити пароль:</label>
                     <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit">Зареєструватись</button>
             </form>
         </div>
     );

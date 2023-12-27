@@ -58,36 +58,37 @@ function ProfilePage() {
         }
     };
 
+	const hideDepositForm = () => {
+		setShowDepositForm(false);
+	};
+
     return (
         <div>
-            <h1>Личный кабинет</h1>
-            <p>Текущий баланс: {balance}</p>
+            <h1>Особистий кабінет</h1>
+            <p>Ваш баланс: {balance}</p>
 
-            <Link to="/main" className="link-button">Главная страница</Link>
-
-            {showDepositForm ? (
-                <div className="deposit-form">
-                    <div className="deposit-title">Пополнение баланса</div>
-                    <input
-                        type="number"
-                        value={depositAmount}
-                        onChange={(e) => setDepositAmount(e.target.value)}
-                        placeholder="Сумма для пополнения"
-                    />
-                    <button onClick={handleDeposit}>Пополнить счет</button>
-                </div>
-            ) : (
-                <button onClick={() => setShowDepositForm(true)} style={{
-                    padding: '10px 20px',
-                    backgroundColor: '#007bff',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '4px',
-                    cursor: 'pointer'
-                }}>
-                    Пополнить баланс
-                </button>
-            )}
+			<div className="profile-buttons">
+				<Link to="/main" className="link-button">Головна сторінка</Link>
+				<button onClick={() => setShowDepositForm(true)}>
+						Поповнити баланс
+				</button>
+				
+			</div>
+			{showDepositForm ? (
+					<div className="deposit-form">
+						<div className="deposit-head">
+							<div className="deposit-title">Поповнення балансу</div>
+						</div>
+						<input
+							type="number"
+							value={depositAmount}
+							onChange={(e) => setDepositAmount(e.target.value)}
+							placeholder="Сумма для пополнения"
+						/>
+						<button onClick={handleDeposit}>Підтвердити</button>
+						<button onClick={() => hideDepositForm()}>Назад</button>
+					</div>
+				):('')}
         </div>
     );
 }

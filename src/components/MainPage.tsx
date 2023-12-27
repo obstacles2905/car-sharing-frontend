@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/MainPageStyles.css';
-import ProfileButton from "./ProfileButton";
 import { useNavigate } from "react-router-dom";
 import {CarPopup} from "./CarPopup";
 import {Car} from "../contracts";
@@ -28,12 +27,7 @@ export function MainPage() {
 
     return (
         <div className="main-container">
-            <nav className="top-nav">
-                <div className="nav-right">
-                    <ProfileButton />
-                </div>
-            </nav>
-
+    
             <div className="cars-showcase">
                 <h2>Доступні авто</h2>
                 <div className="cars-grid">
@@ -50,9 +44,6 @@ export function MainPage() {
             </div>
             <CarPopup car={selectedCar} onClose={() => setSelectedCar(null)} />
 
-            <footer className="main-footer">
-                {/* Футер с контактной информацией и ссылками */}
-            </footer>
         </div>
     );
 }

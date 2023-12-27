@@ -9,7 +9,7 @@ function ProfileButton() {
     };
 
     return (
-        <button onClick={handleProfileClick}>Личный кабинет</button>
+        <button className='header-button' onClick={handleProfileClick}>Особистий кабінет</button>
     );
 }
 

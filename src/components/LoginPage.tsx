@@ -43,17 +43,17 @@ function LoginPage({ onLogin }: { onLogin: any }) {
     return (
         <div className="auth-container">
             <form className="auth-form" onSubmit={handleSubmit}>
-                <h2>Login</h2>
+                <h2>Увійти в аккаунт</h2>
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
-                <div>
-                    <label>Email:</label>
+                <div className='form-field'>
+                    <label>Пошта:</label>
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
-                <div>
-                    <label>Password:</label>
+                <div className='form-field'>
+                    <label>Пароль:</label>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit">Увійти</button>
             </form>
         </div>
     );
