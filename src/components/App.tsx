@@ -4,6 +4,7 @@ import LoginPage from './LoginPage';
 import RegistrationPage from './RegistrationPage';
 import {MainPage} from "./MainPage";
 import ProfilePage from "./ProfilePage";
+import OrderPage from "./OrderPage";
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -33,6 +34,7 @@ function App() {
                     <Route path="/register" element={<RegistrationPage />} />
                     <Route path="/main" element={<MainPage />} />
                     <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/order" element={<OrderPage />} />
                 </Routes>
             </div>
         </Router>
