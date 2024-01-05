@@ -5,29 +5,30 @@ function ProfilePage() {
     const [showDepositForm, setShowDepositForm] = useState(false);
     const [depositAmount, setDepositAmount] = useState('');
     const [balance, setBalance] = useState(0);
+    const [activeOrders, setActiveOrders] = useState([]);
 
-    const fetchBalance = () => {
+    const fetchBalanceAndOrders = () => {
         const userId = localStorage.getItem('userId');
         if (userId) {
             fetch(`http://localhost:8080/users/${userId}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
+                .then(response => response.json())
+                .then(data => {
+                    setBalance(data.balance);
                 })
+                .catch(error => console.error('Error fetching balance:', error));
+
+            fetch(`http://localhost:8080/orders/active-orders?userId=${userId}`)
+                .then(response => response.json())
                 .then(data => {
                     console.log("DATA", data);
-                    setBalance(data.balance); // Предполагаем, что баланс находится в data.balance
+                    setActiveOrders(data.activeOrders);
                 })
-                .catch(error => {
-                    console.error('There has been a problem with your fetch operation:', error);
-                });
+                .catch(error => console.error('Error fetching orders:', error));
         }
     };
 
     useEffect(() => {
-        fetchBalance();
+        fetchBalanceAndOrders();
     }, []);
 
     const handleDeposit = () => {
@@ -47,8 +48,7 @@ function ProfilePage() {
                     return response.json();
                 })
                 .then(data => {
-                    // Обновляем баланс после успешного пополнения
-                    fetchBalance();
+                    fetchBalanceAndOrders();
                     setShowDepositForm(false);
                     setDepositAmount('');
                 })
@@ -89,6 +89,20 @@ function ProfilePage() {
 						<button onClick={() => hideDepositForm()}>Назад</button>
 					</div>
 				):('')}
+
+            <div>
+                <h2>Активні замовлення</h2>
+                {activeOrders.length > 0 ? (
+                    activeOrders.map((order: any) => (
+                        <div key={order.id}>
+                            <h4>Замовлення №{order.id} {order.status}</h4>
+                            {/* Отображение деталей заказа */}
+                        </div>
+                    ))
+                ) : (
+                    <p>Немає активних замовлень.</p>
+                )}
+            </div>
         </div>
     );
 }
