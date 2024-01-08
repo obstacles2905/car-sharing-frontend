@@ -38,13 +38,22 @@ function App() {
 									<>
 										<button className='header-button' onClick={() => handleAuthentication(false)}>Вийти</button>
 										<ProfileButton />
+										<Link to="/main" className="nav-link">
+										Головна сторінка
+										</Link>
 									</>
 								) : (
 									<>
 										<li><Link to="/login" className="nav-link">Увійти</Link></li>
 										<li><Link to="/register" className="nav-link">Зареєструватись</Link></li>
+										<li><Link to="/main" className="nav-link">
+										Головна сторінка
+									</Link></li>
 									</>
 								)}
+								 
+									
+								
 							</nav>
 						</div>
 					</header>

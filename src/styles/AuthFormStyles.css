@@ -72,11 +72,6 @@
     transition: background-color 0.3s; /* Плавный эффект при наведении */
 }
 
-/* Стили для изменения фона при наведении */
-.nav-link:hover {
-    background-color: #9b9f9e;
-}
-
 .error-message {
     color: red; /* Цвет текста ошибки */
     margin-bottom: 10px; /* Отступ снизу */
