@@ -62,7 +62,7 @@ function App() {
 							{
 								!isAuthenticated ? (
 									<>
-										<h1>Добрий день йопт сукбляя)))) !</h1>
+										<h1>Car sharing service</h1>
 										<Routes>
 											<Route path="/login" element={<LoginPage onLogin={() => handleAuthentication(true)} />} />
 											<Route path="/register" element={<RegistrationPage />} />

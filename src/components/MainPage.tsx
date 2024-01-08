@@ -15,7 +15,7 @@ export function MainPage() {
             navigate('/login');
         }
 
-        fetch('http://localhost:8080/cars')
+        fetch('http://localhost:8080/cars/available')
             .then(response => response.json())
             .then(data => setCars(data))
             .catch(error => console.error('Error:', error));
