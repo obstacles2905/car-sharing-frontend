@@ -5,6 +5,7 @@ import OrderHistory from './OrderHistory';
 interface Order {
   status: string;
   carId: number;
+  id: number;
   endTime: string;
   createdAt: string;
   updatedAt: string;
@@ -15,11 +16,20 @@ interface Order {
   children?: JSX.Element | JSX.Element[];
 }
 
+interface UserData {
+	firstName: string;
+	lastName: string;
+	phoneNumber: string;
+	email: string;
+	balance: string;
+}
+
 function ProfilePage() {
   const [showDepositForm, setShowDepositForm] = useState(false);
   const [history, setHistory] = useState<Order[]>([]);
   const [depositAmount, setDepositAmount] = useState('');
   const [balance, setBalance] = useState(0);
+  const [userInfo, setUserInfo] = useState<UserData | null>(null);
   const userId = localStorage.getItem('userId');
 
   const fetchOrders = async () => {
@@ -30,7 +40,7 @@ function ProfilePage() {
       }
       const data = await response.json();
       const activeOrders: Order[] = data.activeOrders || [];
-      console.log(activeOrders);
+
       setHistory(activeOrders);
     } catch (error) {
       console.error('Error fetching rent history:', error);
@@ -45,8 +55,9 @@ function ProfilePage() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log('DATA', data);
-        setBalance(data.balance);
+
+        setBalance(parseInt(data.balance));
+		setUserInfo(data);
       } catch (error) {
         console.error('Error fetching user balance:', error);
       }
@@ -85,9 +96,14 @@ function ProfilePage() {
     }
   };
 
+  console.log(userInfo);
+  
+
   return (
     <div>
-      <h1>Особистий кабінет</h1>
+      <h1>Вітаємо, {userInfo ? userInfo.firstName : 'Unknown'}!</h1>
+	  <p>Ваша пошта: {userInfo ? userInfo.email : 'Unknown'}</p>
+	  <p>Ваш номер телефону: {userInfo ? userInfo.phoneNumber : 'Unknown'}</p>
       <p>Ваш баланс: {balance}$</p>
 
       <div className="profile-buttons">
@@ -109,8 +125,7 @@ function ProfilePage() {
           <button onClick={() => setShowDepositForm(false)}>Назад</button>
         </div>
       )}
-
-	  <OrderHistory orders={history} />
+		<OrderHistory orders={history} />
     </div>
   );
 }

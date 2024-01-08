@@ -1,5 +1,5 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import '../styles/OrderPageStyles.css';
 import moment from "moment";
 
@@ -7,6 +7,8 @@ function OrderPage() {
     const location = useLocation();
     const navigate = useNavigate();
     const { car, rentDays } = location.state || {};
+
+	const [isNotEnoughMoney, setIsNotEnoughMoney] = useState(false);
 
     if (!car) return <p>Автомобиль не выбран</p>;
 
@@ -26,11 +28,17 @@ function OrderPage() {
                     carId: car.id,
                     daysAmount: rentDays
                 })
-            })
+            	})
                 .then(response => {
                     if (!response.ok) {
+						if ( response.status === 403 ) {
+							setIsNotEnoughMoney(true);
+						}
+
                         throw new Error('Error in starting rent');
                     }
+					
+
                     return response.json();
                 })
                 .then(data => {
@@ -45,20 +53,31 @@ function OrderPage() {
 
     return (
         <div className="order-details">
-            <h1>Оформлення замовлення</h1>
-            <img src={car.photoUrl} alt={`${car.brand} ${car.model}`} />
+			<h1 className="order-title">Оформлення замовлення</h1>
+			<img className="car-image" src={car.photoUrl} alt={`${car.brand} ${car.model}`} />
 
-            <h2>{car.brand} {car.model}</h2>
-            <h3>Рік випуску: {car.year}</h3>
-            <h3>Пробіг: {car.mileage}км</h3>
-            <h3>Тип палива: {car.fuelType}</h3>
-            <h3>Стан авто: {car.condition}</h3>
-            <h3>Днів оренди: {rentDays} </h3>
-            <h3>Дата завершення оренди: {moment().add(rentDays, 'days').format('DD-MM-YYYY HH:mm:ss')} </h3>
-            <h3>Сумма замовлення: {Number(car.rentPrice) * Number(rentDays)}грн </h3>
+			<h2 className="car-name">{car.brand} {car.model}</h2>
+			<div className="car-details">
+				<h3>Рік випуску: {car.year}</h3>
+				<h3>Пробіг: {car.mileage}км</h3>
+				<h3>Тип палива: {car.fuelType}</h3>
+				<h3>Стан авто: {car.condition}</h3>
+				<h3>Днів оренди: {rentDays}</h3>
+				<h3>Дата завершення оренди: {moment().add(rentDays, 'days').format('DD-MM-YYYY HH:mm:ss')}</h3>
+				<h3>Сумма замовлення: {Number(car.rentPrice) * Number(rentDays)}$</h3>
+			</div>
 
-            <button onClick={handleConfirmRent}>Підтвердити оренду</button>
-        </div>
+			{isNotEnoughMoney? (
+				<p className="error-text">
+					<span>На вашому балансі не вистачає коштів</span> <br />
+					<Link className='confirm-rent-button' to={'/profile'}>
+						Поповнити рахунок
+					</Link>
+				</p>
+			) : ("")}
+
+			<button className="confirm-rent-button" onClick={handleConfirmRent}>Підтвердити оренду</button>
+		</div>
     );
 }
 

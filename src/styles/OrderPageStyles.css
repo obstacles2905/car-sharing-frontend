@@ -1,17 +1,69 @@
-.order-details img {
-    max-width: 480px;
-    max-height: 270px;
-    width: auto;
-    height: auto;
-}
+	.order-details {
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+		color: #333;
+		max-width: 500px;
+		margin: 40px auto;
+	}
+	.error-text {
+		color: rgb(250, 5, 5);
+		font-size: 16px;
+		margin: 10px 0;
+		padding: 15px;
+		border-radius: 4px;
+		background: rgba(253, 169, 169, 0.3);
+		border: 1px solid rgb(233, 85, 85);
+		text-align: center;
 
-.order-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Центрирование содержимого по горизонтали */
-    justify-content: center; /* Центрирование содержимого по вертикали, если требуется */
-    max-width: 500px; /* Максимальная ширина блока */
-    margin: 0 auto; /* Автоматические отступы слева и справа для центрирования блока */
-    padding: 20px; /* Отступы внутри блока */
-    /* Другие стили, например, граница, фон, тени и т.д. */
-}
+	}
+	.error-text a {
+		text-decoration: none;
+		background-color: rgb(74, 146, 84);
+	}
+	.error-text a:hover {
+		background-color: rgb(19, 65, 25);
+	}
+	.order-title {
+		color: #1a202c;
+		text-align: center;
+	}
+
+	.car-image {
+		width: 100%;
+		height: auto;
+		border-radius: 4px;
+		margin-top: 15px;
+	}
+
+	.car-name {
+		color: #4a5568;
+		text-align: center;
+		margin-top: 20px;
+	}
+
+	.car-details h3 {
+		border-bottom: 1px solid #eaeaea;
+		padding-bottom: 5px;
+		margin-bottom: 10px;
+		color: #2d3748;
+		font-weight: 400;
+	}
+
+	.confirm-rent-button {
+		background-color: #3182ce;
+		color: white;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		display: block;
+		width: 100%;
+		margin-top: 20px;
+		font-size: 16px;
+	}
+
+	.confirm-rent-button:hover {
+		background-color: #2c5282;
+	}

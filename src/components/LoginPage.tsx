@@ -33,7 +33,7 @@ function LoginPage({ onLogin }: { onLogin: any }) {
 
             localStorage.setItem('userId', data.userId);
             onLogin();
-            navigate('/main');
+            navigate('/profile');
         } catch (error: any) {
             console.error('Error during data fetching', error);
             setErrorMessage(error.message);

@@ -25,12 +25,16 @@ export function MainPage() {
         setSelectedCar(car);
     };
 
+	console.log(cars);
+	
+
     return (
         <div className="main-container">
     
             <div className="cars-showcase">
                 <h2>Доступні авто</h2>
-                <div className="cars-grid">
+				{cars.length ? (
+					<div className="cars-grid">
                     {cars.map((car: Car) => (
                         <div key={car.id} className="car-card" onClick={() => handleCarClick(car)}>
                             <img src={car.photoUrl} alt={`${car.brand} ${car.model}`} />
@@ -41,6 +45,7 @@ export function MainPage() {
                         </div>
                     ))}
                 </div>
+				) : ("Наразі немає доступних авто")}
             </div>
             <CarPopup car={selectedCar} onClose={() => setSelectedCar(null)} />
 
